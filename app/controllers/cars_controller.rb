@@ -25,8 +25,14 @@ class CarsController < ApplicationController
   end
   
   def create
-    @car = Car.new params[:car]
+    @car = Car.new car_params
     @car.save
     render json: @car.to_json
+  end
+  
+  private
+  
+  def car_params
+    params.require(:car).permit(:plate, :color, :make, :model)
   end
 end
