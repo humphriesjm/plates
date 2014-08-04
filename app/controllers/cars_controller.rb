@@ -4,6 +4,11 @@ class CarsController < ApplicationController
     render json: @cars.to_json
   end
   
+  def search_plates
+    @cars = Car.where("lower(plate) like ?", "%#{params[:term].downcase}%")
+    render json: @cars.to_json
+  end
+  
   # t.string   "plate"
   # t.string   "color"
   # t.string   "make"

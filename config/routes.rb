@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   
+  get 'search_plates/:term' => 'cars#search_plates'
+  
   resources :cars
   resources :comments
   resources :users
