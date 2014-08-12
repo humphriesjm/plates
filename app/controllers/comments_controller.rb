@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
   end
   
   def leave_comment
-    @car = Car.where({ car_id: params[:car_id] }).first
+    puts "HELLOOOOOOOOO"
+    @car = Car.find(params[:car_id])
     puts @car
     @comment = @car.comments.create(comment_params)
     puts @comment
