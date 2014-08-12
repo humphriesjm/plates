@@ -9,6 +9,13 @@ class CommentsController < ApplicationController
     render json: @comments.to_json
   end
   
+  def leave_comment
+    car = Car.find(:car_id)
+    @comment = car.comments.new comment_params
+    @comment.save
+    render json: @comment.to_json
+  end
+  
   # t.string   "message"
   # t.string   "flags"
   # t.float    "latitude"

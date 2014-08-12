@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   get 'get_comments/:id' => 'comments#search_comments'
   
+  post 'leave_comment/:car_id' => 'comments#leave_comment'
+  
   resources :cars
   resources :comments
   resources :users
