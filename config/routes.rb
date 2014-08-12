@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   
   get 'search_plates/:term' => 'cars#search_plates'
   
+  get 'get_comments/:id' => 'comments#search_comments'
+  
   resources :cars
   resources :comments
   resources :users

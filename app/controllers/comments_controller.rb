@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
     render json: @comments.to_json
   end
   
-  def show
-    @comments = Comment.where({ car_id: params[:car_id] })
+  def search_comments
+    @comments = Comment.where({ car_id: params[:id] })
     render json: @comments.to_json
   end
   
