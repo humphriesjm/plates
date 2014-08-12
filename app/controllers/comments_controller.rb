@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
     render json: @comments.to_json
   end
   
+  def show
+    @comments = Comment.where({ car_id: params[:car_id] })
+    render json: @comments.to_json
+  end
+  
   # t.string   "message"
   # t.string   "flags"
   # t.float    "latitude"
@@ -13,8 +18,15 @@ class CommentsController < ApplicationController
   # t.integer  "car_id"
   # t.integer  "user_id"
   def create
-    @comment = Comment.new params[:comment]
+    @comment = Comment.new comment_params
     @comment.save
-    render @comment.to_json
+    render json: @comment.to_json
   end
+  
+  private
+  
+  def comment_params
+    params.require(:comment).permit(:message, :flags, :latitude, :longitude, :car_id, :user_id)
+  end
+  
 end
