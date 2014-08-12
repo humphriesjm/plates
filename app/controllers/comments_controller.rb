@@ -11,8 +11,10 @@ class CommentsController < ApplicationController
   
   def leave_comment
     car = Car.find(:car_id)
-    @comment = car.comments.create comment_params
-    @comment.save
+    puts car
+    @comment = car.comments.create(comment_params)
+    puts @comment
+    # @comment.save
     render json: @comment.to_json
   end
   
